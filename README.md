@@ -1,2 +1,2 @@
 # ideal-doodle
-Simple Go web server. You must specify the port on command line.
+A simple Go web server. You can specify the port on command line.
