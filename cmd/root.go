@@ -56,7 +56,7 @@ func handleRequest(conn net.Conn) {
 	} else {
 		log.Info().Str("msg", string(buf[:payloadLength])).Msg("Received")
 		// Send a response back to person contacting us.
-		conn.Write([]byte("OK"))
+		conn.Write([]byte("OK\n"))
 	}
 }
 

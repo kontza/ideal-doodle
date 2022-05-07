@@ -1,2 +1,2 @@
 # ideal-doodle
-A simple Go web server. You can specify the port on command line.
+A simple Go TCP server. You can specify the address and port to listen to on the command line.
