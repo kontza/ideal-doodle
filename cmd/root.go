@@ -7,6 +7,7 @@ package cmd
 import (
 	"net"
 	"os"
+	"strings"
 
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
@@ -27,7 +28,8 @@ var rootCmd = &cobra.Command{
 				log.Error().Err(err).Msg("Failed to get a listener:")
 			} else {
 				defer listener.Close()
-				log.Info().Msg("Listening... Now do 'echo -n test | nc localhost 7600' in another window.")
+				parts := strings.Split(address, ":")
+				log.Info().Msgf("Listening... Now do 'echo -n test | nc %s %s' in another window.", parts[0], parts[1])
 				for {
 					if conn, err := listener.Accept(); err != nil {
 						log.Fatal().Err(err).Msg("Failed to accept connection:")
