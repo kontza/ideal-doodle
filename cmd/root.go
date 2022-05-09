@@ -18,7 +18,7 @@ import (
 var rootCmd = &cobra.Command{
 	Use:     "ideal-doodle",
 	Short:   "A simple Go web server. You can specify the port on command line.",
-	Version: "1.0",
+	Version: "2.1",
 	Run: func(cmd *cobra.Command, args []string) {
 		if address, err := cmd.Flags().GetString("address"); err != nil {
 			log.Error().Err(err).Msg("Failed to get 'address' from flags:")
@@ -28,7 +28,7 @@ var rootCmd = &cobra.Command{
 				log.Error().Err(err).Msg("Failed to get a listener:")
 			} else {
 				defer listener.Close()
-				parts := strings.Split(address, ":")
+				parts := strings.Split(listener.Addr().String(), ":")
 				log.Info().Msgf("Listening... Now do 'echo -n test | nc %s %s' in another window.", parts[0], parts[1])
 				for {
 					if conn, err := listener.Accept(); err != nil {
