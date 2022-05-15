@@ -24,7 +24,7 @@ var rootCmd = &cobra.Command{
 			log.Error().Err(err).Msg("Failed to get 'address' from flags:")
 		} else {
 			log.Info().Str("address", address).Msg("Current")
-			if listener, err := net.Listen("tcp", address); err != nil {
+			if listener, err := net.Listen("tcp4", address); err != nil {
 				log.Error().Err(err).Msg("Failed to get a listener:")
 			} else {
 				defer listener.Close()
