@@ -18,7 +18,7 @@ import (
 var rootCmd = &cobra.Command{
 	Use:     "ideal-doodle",
 	Short:   "A simple Go web server. You can specify the port on command line.",
-	Version: "2.1",
+	Version: "2.2",
 	Run: func(cmd *cobra.Command, args []string) {
 		if address, err := cmd.Flags().GetString("address"); err != nil {
 			log.Error().Err(err).Msg("Failed to get 'address' from flags:")
